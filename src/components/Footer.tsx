@@ -38,7 +38,19 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <img src="/src/assets/logo.png" alt="Naresh Innovations Logo" className="w-10 h-10" />
+                                            <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-full bg-white/10 backdrop-blur-sm">
+                 <img 
+                   src="/logo.png" 
+                   alt="Naresh Innovations Logo" 
+                   className="w-full h-full object-contain rounded-full"
+                   onError={(e) => {
+                     // Fallback to text if image fails to load
+                     e.currentTarget.style.display = 'none';
+                     e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                   }}
+                 />
+                 <span className="text-white font-bold text-sm hidden">NI</span>
+               </div>
               <div>
                 <h3 className="text-xl font-bold">Naresh Innovations</h3>
                 <p className="text-sm text-luxury-charcoal-foreground/80">Crafting Dream Interiors</p>
