@@ -9,7 +9,7 @@ Inspired by premium interior design and architecture.
 
 @layer base {
   :root {
-    /* Base colors - Luxury Interior Palette */
+    /* Base colors - Naresh Innovations Green Palette */
     --background: 0 0% 98%;
     --foreground: 0 0% 8%;
 
@@ -21,20 +21,20 @@ Inspired by premium interior design and architecture.
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 8%;
 
-    /* Primary - Deep Walnut Brown */
-    --primary: 30 12% 25%;
+    /* Primary - Naresh Green */
+    --primary: 85 65% 45%;
     --primary-foreground: 0 0% 98%;
 
-    /* Secondary - Warm Glass White */
-    --secondary: 45 15% 96%;
-    --secondary-foreground: 30 12% 25%;
+    /* Secondary - Light Green Tint */
+    --secondary: 85 25% 95%;
+    --secondary-foreground: 85 65% 25%;
 
     /* Muted tones */
-    --muted: 30 8% 92%;
-    --muted-foreground: 30 6% 45%;
+    --muted: 85 15% 92%;
+    --muted-foreground: 85 10% 45%;
 
-    /* Accent - Bronze Gold */
-    --accent: 45 65% 55%;
+    /* Accent - Vibrant Green */
+    --accent: 85 85% 55%;
     --accent-foreground: 0 0% 8%;
 
     /* Luxury Charcoal */
@@ -50,19 +50,19 @@ Inspired by premium interior design and architecture.
     --destructive-foreground: 0 0% 98%;
 
     /* Borders and inputs */
-    --border: 30 10% 85%;
-    --input: 30 8% 90%;
-    --ring: 45 65% 55%;
+    --border: 85 20% 85%;
+    --input: 85 15% 90%;
+    --ring: 85 85% 55%;
 
-    /* Gradients */
-    --gradient-luxury: linear-gradient(135deg, hsl(30 12% 25%), hsl(45 65% 55%));
-    --gradient-glass: linear-gradient(180deg, hsl(0 0% 100%), hsl(45 15% 96%));
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 8% / 0.8), hsl(30 12% 25% / 0.6));
+    /* Green Gradients */
+    --gradient-luxury: linear-gradient(135deg, hsl(85 65% 45%), hsl(85 85% 55%));
+    --gradient-glass: linear-gradient(180deg, hsl(0 0% 100%), hsl(85 25% 95%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 8% / 0.8), hsl(85 65% 25% / 0.6));
 
     /* Shadows */
-    --shadow-luxury: 0 25px 50px -12px hsl(30 12% 25% / 0.25);
+    --shadow-luxury: 0 25px 50px -12px hsl(85 65% 45% / 0.25);
     --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.1);
-    --shadow-accent: 0 0 40px hsl(45 65% 55% / 0.3);
+    --shadow-accent: 0 0 40px hsl(85 85% 55% / 0.3);
 
     /* Transitions */
     --transition-luxury: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
@@ -88,7 +88,7 @@ Inspired by premium interior design and architecture.
   }
 
   .dark {
-    /* Dark mode with luxury interior theme */
+    /* Dark mode with green theme */
     --background: 0 0% 8%;
     --foreground: 0 0% 98%;
 
@@ -98,16 +98,16 @@ Inspired by premium interior design and architecture.
     --popover: 0 0% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 45 65% 55%;
+    --primary: 85 85% 55%;
     --primary-foreground: 0 0% 8%;
 
-    --secondary: 30 12% 18%;
+    --secondary: 85 25% 18%;
     --secondary-foreground: 0 0% 98%;
 
     --muted: 0 0% 18%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 45 65% 55%;
+    --accent: 85 85% 55%;
     --accent-foreground: 0 0% 8%;
 
     --luxury-charcoal: 0 0% 5%;
@@ -121,15 +121,15 @@ Inspired by premium interior design and architecture.
 
     --border: 0 0% 20%;
     --input: 0 0% 15%;
-    --ring: 45 65% 55%;
+    --ring: 85 85% 55%;
 
-    --gradient-luxury: linear-gradient(135deg, hsl(0 0% 8%), hsl(45 65% 55%));
-    --gradient-glass: linear-gradient(180deg, hsl(0 0% 12%), hsl(30 12% 18%));
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 5% / 0.9), hsl(30 12% 15% / 0.7));
+    --gradient-luxury: linear-gradient(135deg, hsl(0 0% 8%), hsl(85 85% 55%));
+    --gradient-glass: linear-gradient(180deg, hsl(0 0% 12%), hsl(85 25% 18%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 0% 5% / 0.9), hsl(85 65% 15% / 0.7));
 
     --shadow-luxury: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
     --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
-    --shadow-accent: 0 0 40px hsl(45 65% 55% / 0.4);
+    --shadow-accent: 0 0 40px hsl(85 85% 55% / 0.4);
   }
 }
 

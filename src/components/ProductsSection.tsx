@@ -29,28 +29,28 @@ const ProductsSection = () => {
       title: 'Premium Glass Solutions',
       description: 'Tempered glass, frosted glass, decorative glass panels, and custom glass installations for modern interiors.',
       features: ['Tempered Safety Glass', 'Decorative Panels', 'Custom Designs', 'Professional Installation'],
-      color: 'from-blue-500/20 to-cyan-500/20',
+      color: 'from-emerald-500/20 to-green-500/20',
     },
     {
       icon: Layers,
       title: 'Quality Plywood & Boards',
       description: 'High-grade plywood, MDF, HDF, and specialty boards for furniture, cabinets, and architectural applications.',
       features: ['Premium Plywood', 'MDF & HDF Boards', 'Waterproof Options', 'Eco-Friendly Materials'],
-      color: 'from-amber-500/20 to-orange-500/20',
+      color: 'from-lime-500/20 to-green-400/20',
     },
     {
       icon: Lock,
       title: 'Designer Locks & Handles',
       description: 'Luxury door handles, cabinet hardware, security locks, and architectural fittings from premium brands.',
       features: ['Designer Handles', 'Security Locks', 'Cabinet Hardware', 'Architectural Fittings'],
-      color: 'from-purple-500/20 to-pink-500/20',
+      color: 'from-green-600/20 to-emerald-600/20',
     },
     {
       icon: Home,
       title: 'Interior Accessories',
       description: 'Complete range of interior accessories, hinges, brackets, and specialized hardware for finishing touches.',
       features: ['Hinges & Brackets', 'Sliding Systems', 'Lighting Fixtures', 'Finishing Hardware'],
-      color: 'from-green-500/20 to-emerald-500/20',
+      color: 'from-green-500/20 to-lime-500/20',
     },
   ];
 
