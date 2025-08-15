@@ -48,23 +48,23 @@ const HeroSection = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white"
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
           alt="Luxury interior design showcase"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover opacity-30"
         />
-        <div className="absolute inset-0 bg-gradient-hero"></div>
+        <div className="absolute inset-0 bg-white/60"></div>
       </div>
 
       {/* Content */}
       <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
         <h1
           ref={titleRef}
-          className="heading-xl text-primary-foreground mb-6 luxury-fade-up font-serif"
+          className="heading-xl text-black mb-6 luxury-fade-up font-serif"
         >
           Naresh Innovations
           <span className="block text-accent mt-2">Crafting Your Dream Interiors</span>
@@ -72,7 +72,7 @@ const HeroSection = () => {
 
         <p
           ref={subtitleRef}
-          className="body-lg text-primary-foreground/90 mb-8 max-w-2xl mx-auto luxury-fade-up"
+          className="body-lg text-black/80 mb-8 max-w-2xl mx-auto luxury-fade-up"
         >
           Premium glass, plywood, locks, handles, and complete interior solutions in Mysuru. 
           From 2D/3D design plans to turnkey execution, we transform spaces into luxury experiences.
@@ -88,7 +88,7 @@ const HeroSection = () => {
           <Button
             variant="outline"
             size="lg"
-            className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-luxury-charcoal transition-all duration-300 px-8 py-4"
+            className="bg-white/90 border-black/20 text-black hover:bg-white hover:text-accent transition-all duration-300 px-8 py-4 backdrop-blur-sm"
           >
             Get Free Consultation
           </Button>

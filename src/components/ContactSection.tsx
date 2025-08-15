@@ -50,19 +50,19 @@ const ContactSection = () => {
     {
       icon: MapPin,
       title: 'Visit Our Showroom',
-      content: 'Naresh Innovations\nMysuru, Karnataka, India',
+      content: 'Kuvempu Nagar 1st Stage\nKuvempu Nagara, Mysuru\nKarnataka 570023',
       subtext: 'Mon - Sat: 9:00 AM - 7:00 PM',
     },
     {
       icon: Phone,
       title: 'Call Us',
-      content: '+91 XXXXX XXXXX',
+      content: '+91 9880079820',
       subtext: 'Available during business hours',
     },
     {
       icon: Mail,
       title: 'Email Us',
-      content: 'info@nareshinnovations.com',
+      content: 'nareshinnovations@yahoo.com',
       subtext: 'We reply within 24 hours',
     },
     {

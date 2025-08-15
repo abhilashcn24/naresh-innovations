@@ -38,9 +38,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="space-y-6">
             <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-luxury rounded-lg flex items-center justify-center">
-                <span className="text-xl font-bold text-primary-foreground">N</span>
-              </div>
+              <img src="/src/assets/logo.png" alt="Naresh Innovations Logo" className="w-10 h-10" />
               <div>
                 <h3 className="text-xl font-bold">Naresh Innovations</h3>
                 <p className="text-sm text-luxury-charcoal-foreground/80">Crafting Dream Interiors</p>
@@ -55,15 +53,15 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <MapPin className="w-5 h-5 text-accent" />
-                <span className="text-sm">Mysuru, Karnataka, India</span>
+                <span className="text-sm">Kuvempu Nagar 1st Stage, Kuvempu Nagara, Mysuru, Karnataka 570023</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-accent" />
-                <span className="text-sm">+91 XXXXX XXXXX</span>
+                <span className="text-sm">+91 9880079820</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="w-5 h-5 text-accent" />
-                <span className="text-sm">info@nareshinnovations.com</span>
+                <span className="text-sm">nareshinnovations@yahoo.com</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Clock className="w-5 h-5 text-accent" />
