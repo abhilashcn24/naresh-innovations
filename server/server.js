@@ -1,4 +1,5 @@
 import express from 'express';
+import fs from 'fs';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
@@ -16,12 +17,10 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
-app.use(helmet()); // Security headers
+// app.use(helmet()); // Security headers
 app.use(morgan('combined')); // Logging
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://yourdomain.com'] 
-    : ['http://localhost:8080', 'http://127.0.0.1:8080'],
+  origin: '*',
   credentials: true
 }));
 app.use(express.json({ limit: '10mb' }));
@@ -34,16 +33,16 @@ app.get('/favicon.ico', (req, res) => {
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
-    message: 'Server is running', 
-    timestamp: new Date().toISOString() 
+  res.json({
+    status: 'OK',
+    message: 'Server is running',
+    timestamp: new Date().toISOString()
   });
 });
 
 // Example API routes
 app.get('/api/hello', (req, res) => {
-  res.json({ 
+  res.json({
     message: 'Hello from Dream Crafted Motion Server!',
     data: {
       project: 'Dream Crafted Motion',
@@ -56,13 +55,13 @@ app.get('/api/hello', (req, res) => {
 // Example POST endpoint
 app.post('/api/data', (req, res) => {
   const { name, message } = req.body;
-  
+
   if (!name || !message) {
-    return res.status(400).json({ 
-      error: 'Name and message are required' 
+    return res.status(400).json({
+      error: 'Name and message are required'
     });
   }
-  
+
   res.json({
     success: true,
     data: {
@@ -77,7 +76,7 @@ app.post('/api/data', (req, res) => {
 // Example GET endpoint with parameters
 app.get('/api/users/:id', (req, res) => {
   const { id } = req.params;
-  
+
   // Mock user data - replace with actual database query
   const mockUser = {
     id: parseInt(id),
@@ -85,14 +84,57 @@ app.get('/api/users/:id', (req, res) => {
     email: 'john@example.com',
     role: 'user'
   };
-  
+
   res.json(mockUser);
+});
+
+// Serve src/assets statically
+app.use('/assets', express.static(path.join(__dirname, '../src/assets')));
+
+// API to list portfolio images dynamically
+app.get('/api/portfolio-images', (req, res) => {
+  const assetsDir = path.join(__dirname, '../src/assets/our works');
+
+  if (!fs.existsSync(assetsDir)) {
+    return res.json([]);
+  }
+
+  const categories = fs.readdirSync(assetsDir).filter(file =>
+    fs.statSync(path.join(assetsDir, file)).isDirectory()
+  );
+
+  const images = [];
+  let idCounter = 1;
+
+  categories.forEach(category => {
+    const categoryPath = path.join(assetsDir, category);
+    const files = fs.readdirSync(categoryPath).filter(file =>
+      /\.(jpg|jpeg|png|webp|gif)$/i.test(file)
+    );
+
+    files.forEach(file => {
+      // Create full URL pointing to this server
+      // path: /src/assets/our works/<category>/<file>
+      // served at: /assets/our works/<category>/<file>
+      const categoryEncoded = encodeURIComponent(category);
+      const fileEncoded = encodeURIComponent(file);
+
+      images.push({
+        id: idCounter++,
+        category: category.toLowerCase(), // Ensure generic 'kitchens' matches
+        src: `http://localhost:${PORT}/assets/our%20works/${categoryEncoded}/${fileEncoded}`,
+        alt: `${category} project ${idCounter}`
+      });
+    });
+  });
+
+  res.json(images);
 });
 
 // Serve static files in production
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../dist')));
-  
+
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist/index.html'));
   });
@@ -101,7 +143,7 @@ if (process.env.NODE_ENV === 'production') {
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
-  res.status(500).json({ 
+  res.status(500).json({
     error: 'Something went wrong!',
     message: process.env.NODE_ENV === 'development' ? err.message : 'Internal server error'
   });
@@ -109,7 +151,7 @@ app.use((err, req, res, next) => {
 
 // 404 handler
 app.use('*', (req, res) => {
-  res.status(404).json({ 
+  res.status(404).json({
     error: 'Route not found',
     path: req.originalUrl
   });
