@@ -1,127 +1,98 @@
-import { useEffect, useRef } from 'react';
-import { Sparkles, Home, Lock, Layers } from 'lucide-react';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { useRef, useEffect, useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+
+// Load all product images from assets
+const productImagesRaw = import.meta.glob('@/assets/products/**/*.{jpg,jpeg,png,webp}', { eager: true, as: 'url' });
+
+const getCategoryImages = (category: string) => {
+  return Object.keys(productImagesRaw)
+    .filter(path => path.includes(`/${category}/`))
+    .map(path => productImagesRaw[path]);
+};
+
+const productCategories = [
+  {
+    id: 'glass',
+    title: 'Premium Glass Solutions',
+    category: 'Glass Partition',
+    images: getCategoryImages('glass')
+  }, {
+    id: 'plywood',
+    title: 'Plywood & Boards',
+    category: 'Commercial Ply',
+    images: getCategoryImages('plywood')
+  }, {
+    id: 'hardware',
+    title: 'Designer Hardware',
+    category: 'Locks & Handles',
+    images: getCategoryImages('hardware')
+  }, {
+    id: 'accessories',
+    title: 'Others',
+    category: 'Smart Solutions',
+    images: getCategoryImages('accessories')
+  }
+];
+
+import ProductCard from './ProductCard';
 
 const ProductsSection = () => {
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
+            entry.target.classList.add('animate-fade-up');
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    const elements = sectionRef.current?.querySelectorAll('.luxury-fade-up, .luxury-scale-in');
-    elements?.forEach((el) => observer.observe(el));
+    const elements = document.querySelectorAll('.product-card');
+    elements.forEach((el) => observer.observe(el));
 
     return () => observer.disconnect();
   }, []);
 
-  const products = [
-    {
-      icon: Sparkles,
-      title: 'Premium Glass Solutions',
-      description: 'Tempered glass, frosted glass, decorative glass panels, and custom glass installations for modern interiors.',
-      features: ['Tempered Safety Glass', 'Decorative Panels', 'Custom Designs', 'Professional Installation'],
-      color: 'from-emerald-500/20 to-green-500/20',
-    },
-    {
-      icon: Layers,
-      title: 'Quality Plywood & Boards',
-      description: 'High-grade plywood, MDF, HDF, and specialty boards for furniture, cabinets, and architectural applications.',
-      features: ['Premium Plywood', 'MDF & HDF Boards', 'Waterproof Options', 'Eco-Friendly Materials'],
-      color: 'from-lime-500/20 to-green-400/20',
-    },
-    {
-      icon: Lock,
-      title: 'Designer Locks & Handles',
-      description: 'Luxury door handles, cabinet hardware, security locks, and architectural fittings from premium brands.',
-      features: ['Designer Handles', 'Security Locks', 'Cabinet Hardware', 'Architectural Fittings'],
-      color: 'from-green-600/20 to-emerald-600/20',
-    },
-    {
-      icon: Home,
-      title: 'Interior Accessories',
-      description: 'Complete range of interior accessories, hinges, brackets, and specialized hardware for finishing touches.',
-      features: ['Hinges & Brackets', 'Sliding Systems', 'Lighting Fixtures', 'Finishing Hardware'],
-      color: 'from-green-500/20 to-lime-500/20',
-    },
-  ];
-
   return (
-    <section id="products" className="py-20 bg-background" ref={sectionRef}>
-      <div className="container mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16 luxury-fade-up">
-          <h2 className="heading-lg text-primary mb-4 font-serif">Our Premium Products</h2>
-          <div className="w-20 h-1 bg-accent mx-auto mb-6"></div>
-          <p className="body-lg text-muted-foreground max-w-2xl mx-auto">
-            Discover our comprehensive range of premium materials and hardware solutions, 
-            carefully curated to bring luxury and functionality to your interior spaces.
+    <section id="products" className="section-container bg-muted/30">
+      <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+        <div className="space-y-4 max-w-2xl">
+          <h2 className="heading-lg text-foreground">Our Premium Collections</h2>
+          <p className="body-lg text-muted-foreground">
+            Sourced from the world's finest manufacturers. Explore our exclusive range of materials and accessories.
           </p>
         </div>
+        <Button
+          variant="default"
+          className="hidden md:inline-flex items-center rounded-full px-6"
+          onClick={() => navigate('/products')}
+        >
+          View Catalogue
+        </Button>
+      </div>
 
-        {/* Products Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product, index) => (
-            <Card
-              key={index}
-              className="luxury-scale-in group relative overflow-hidden border-border hover:shadow-luxury transition-all duration-500 hover:-translate-y-2"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${product.color} opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-              
-              <CardHeader className="relative z-10">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-4 group-hover:bg-accent/20 transition-colors duration-300">
-                  <product.icon className="w-8 h-8 text-accent" />
-                </div>
-                <CardTitle className="text-primary group-hover:text-accent transition-colors duration-300">
-                  {product.title}
-                </CardTitle>
-                <CardDescription className="text-muted-foreground">
-                  {product.description}
-                </CardDescription>
-              </CardHeader>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {productCategories.map((prod, index) => (
+          <ProductCard
+            key={index}
+            {...prod}
+            navigate={navigate}
+          />
+        ))}
+      </div>
 
-              <CardContent className="relative z-10">
-                <ul className="space-y-2">
-                  {product.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-muted-foreground">
-                      <div className="w-1.5 h-1.5 bg-accent rounded-full mr-3"></div>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="mt-6">
-                  <button className="text-accent font-medium hover:text-primary transition-colors duration-300 group">
-                    Learn More
-                    <span className="inline-block ml-1 transform group-hover:translate-x-1 transition-transform duration-300">→</span>
-                  </button>
-                </div>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
-        {/* CTA Section */}
-        <div className="mt-16 text-center luxury-fade-up">
-          <div className="bg-gradient-luxury p-8 rounded-2xl text-primary-foreground">
-            <h3 className="heading-md mb-4 font-serif">Need Custom Solutions?</h3>
-            <p className="body-md mb-6 opacity-90">
-              Our experts can help you find the perfect materials and hardware for your specific project requirements.
-            </p>
-            <button className="bg-primary-foreground text-primary px-8 py-3 rounded-lg font-semibold hover:bg-accent hover:text-accent-foreground transition-all duration-300 transform hover:scale-105">
-              Request Custom Quote
-            </button>
-          </div>
-        </div>
+      <div className="mt-12 text-center md:hidden">
+        <Link to="/products">
+          <Button size="lg" className="rounded-full w-full">
+            View Catalogue
+          </Button>
+        </Link>
       </div>
     </section>
   );

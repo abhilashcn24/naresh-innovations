@@ -2,134 +2,95 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Naresh Innovations Luxury Design System
-All colors MUST be HSL for consistency and theming.
-Inspired by premium interior design and architecture.
+/* Nāresh Innovations Design System
+   Theme: Mobile-First -> Laptop Optimized (16:9)
+   Primary Color: #3d550c (HSL 80 75% 19%)
+   Font: Inter
 */
 
 @layer base {
   :root {
-    /* Base colors - Naresh Innovations Green Palette */
+    /* Base Colors - Light Mode (Clean, Off-White) */
     --background: 0 0% 98%;
-    --foreground: 0 0% 8%;
+    --foreground: 0 0% 10%;
 
-    /* Card system */
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 8%;
+    --card-foreground: 0 0% 10%;
 
-    /* Popover system */
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 0 0% 10%;
 
-    /* Primary - Naresh Green */
-    --primary: 85 65% 45%;
+    /* Primary: #3d550c */
+    --primary: 80 75% 19%;
     --primary-foreground: 0 0% 98%;
 
-    /* Secondary - Light Green Tint */
-    --secondary: 85 25% 95%;
-    --secondary-foreground: 85 65% 25%;
+    /* Secondary: Light Olive Tint */
+    --secondary: 80 20% 90%;
+    --secondary-foreground: 80 75% 19%;
 
-    /* Muted tones */
-    --muted: 85 15% 92%;
-    --muted-foreground: 85 10% 45%;
+    /* Muted */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
 
-    /* Accent - Vibrant Green */
-    --accent: 85 85% 55%;
-    --accent-foreground: 0 0% 8%;
-
-    /* Luxury Charcoal */
-    --luxury-charcoal: 0 0% 15%;
-    --luxury-charcoal-foreground: 0 0% 98%;
-
-    /* Glass effect */
-    --glass: 0 0% 100%;
-    --glass-foreground: 0 0% 8%;
+    /* Accent: Match Primary for consistency */
+    --accent: 80 75% 19%;
+    --accent-foreground: 0 0% 98%;
 
     /* Destructive */
-    --destructive: 0 65% 45%;
+    --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
 
-    /* Borders and inputs */
-    --border: 85 20% 85%;
-    --input: 85 15% 90%;
-    --ring: 85 85% 55%;
+    /* Border/Input */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 80 75% 19%;
 
-    /* Green Gradients */
-    --gradient-luxury: linear-gradient(135deg, hsl(85 65% 45%), hsl(85 85% 55%));
-    --gradient-glass: linear-gradient(180deg, hsl(0 0% 100%), hsl(85 25% 95%));
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 8% / 0.8), hsl(85 65% 25% / 0.6));
-
-    /* Shadows */
-    --shadow-luxury: 0 25px 50px -12px hsl(85 65% 45% / 0.25);
-    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.1);
-    --shadow-accent: 0 0 40px hsl(85 85% 55% / 0.3);
-
-    /* Transitions */
-    --transition-luxury: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-
-    --radius: 0.75rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Custom Radius - Round Eight */
+    --radius: 0.5rem;
   }
 
   .dark {
-    /* Dark mode with green theme */
-    --background: 0 0% 8%;
-    --foreground: 0 0% 98%;
+    /* Base Colors - Dark Mode (Rich Dark Grey/Black) */
+    --background: 0 0% 4%;
+    /* Deeper black for high contrast */
+    --foreground: 0 0% 95%;
 
-    --card: 0 0% 12%;
-    --card-foreground: 0 0% 98%;
+    /* Card System */
+    --card: 0 0% 8%;
+    /* Slightly lighter than background */
+    --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 12%;
-    --popover-foreground: 0 0% 98%;
+    /* Popover */
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 85 85% 55%;
-    --primary-foreground: 0 0% 8%;
+    /* Primary: #3d550c */
+    --primary: 80 75% 19%;
+    --primary-foreground: 0 0% 98%;
 
-    --secondary: 85 25% 18%;
+    /* Secondary: Darker Olive Tint */
+    --secondary: 80 20% 15%;
     --secondary-foreground: 0 0% 98%;
 
-    --muted: 0 0% 18%;
+    /* Muted */
+    --muted: 0 0% 15%;
     --muted-foreground: 0 0% 65%;
 
-    --accent: 85 85% 55%;
-    --accent-foreground: 0 0% 8%;
+    /* Accent */
+    --accent: 80 75% 25%;
+    /* Slightly lighter for visibility on dark */
+    --accent-foreground: 0 0% 98%;
 
-    --luxury-charcoal: 0 0% 5%;
-    --luxury-charcoal-foreground: 0 0% 98%;
-
-    --glass: 0 0% 12%;
-    --glass-foreground: 0 0% 98%;
-
-    --destructive: 0 65% 45%;
+    /* Destructive */
+    --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 0 0% 20%;
+    /* Border/Input */
+    --border: 0 0% 15%;
     --input: 0 0% 15%;
-    --ring: 85 85% 55%;
-
-    --gradient-luxury: linear-gradient(135deg, hsl(0 0% 8%), hsl(85 85% 55%));
-    --gradient-glass: linear-gradient(180deg, hsl(0 0% 12%), hsl(85 25% 18%));
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 5% / 0.9), hsl(85 65% 15% / 0.7));
-
-    --shadow-luxury: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
-    --shadow-glass: 0 8px 32px hsl(0 0% 0% / 0.3);
-    --shadow-accent: 0 0 40px hsl(85 85% 55% / 0.4);
+    --ring: 80 75% 19%;
   }
 }
 
@@ -139,86 +100,61 @@ Inspired by premium interior design and architecture.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    scroll-behavior: smooth;
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
   }
 
-  /* Typography Classes */
+  /* Typography Scale - Laptop Optimized */
   .heading-xl {
-    @apply text-5xl md:text-7xl font-bold leading-tight tracking-tight;
+    @apply text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-tight;
   }
 
   .heading-lg {
-    @apply text-4xl md:text-5xl font-bold leading-tight;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight;
   }
 
   .heading-md {
-    @apply text-2xl md:text-3xl font-semibold leading-snug;
+    @apply text-2xl md:text-3xl font-semibold;
   }
 
   .body-lg {
-    @apply text-lg md:text-xl leading-relaxed;
+    @apply text-lg md:text-xl leading-relaxed text-muted-foreground;
   }
 
-  .body-md {
-    @apply text-base md:text-lg leading-relaxed;
+  /* Component Utilities */
+  .section-container {
+    @apply container mx-auto px-6 py-20 lg:py-32;
   }
 
-  /* Luxury Animation Classes */
-  .luxury-fade-up {
-    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
-  }
+  /* Animations handled by tailwind.config.ts */
 
-  .luxury-fade-up.animate {
-    @apply opacity-100 translate-y-0;
+  .glass-panel {
+    @apply bg-background/50 backdrop-blur-md border border-white/10 dark:border-white/5;
   }
+}
 
-  .luxury-scale-in {
-    @apply opacity-0 scale-95 transition-all duration-500 ease-out;
-  }
+/* Custom Scrollbar - Premium Look */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
 
-  .luxury-scale-in.animate {
-    @apply opacity-100 scale-100;
-  }
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
 
-  /* Glass Effect */
-  .glass-effect {
-    @apply backdrop-blur-md bg-white/10 border border-white/20;
-  }
+::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground) / 0.3);
+  border-radius: 9999px;
+  border: 2px solid hsl(var(--background));
+}
 
-  /* Luxury Button Styles */
-  .btn-luxury {
-    @apply relative overflow-hidden px-8 py-4 text-luxury-charcoal-foreground bg-accent border-2 border-accent transition-all duration-300 hover:bg-transparent hover:text-accent;
-  }
+::-webkit-scrollbar-thumb:hover {
+  background-color: hsl(var(--primary));
+}
 
-  .btn-luxury::before {
-    content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent translate-x-[-100%] transition-transform duration-700;
-  }
-
-  .btn-luxury:hover::before {
-    @apply translate-x-[100%];
-  }
-
-  /* Scroll Indicator */
-  .scroll-indicator {
-    @apply animate-bounce text-accent;
-  }
-
-  /* Custom Scrollbar */
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  ::-webkit-scrollbar-track {
-    @apply bg-muted;
-  }
-
-  ::-webkit-scrollbar-thumb {
-    @apply bg-accent rounded-full;
-  }
-
-  ::-webkit-scrollbar-thumb:hover {
-    @apply bg-primary;
-  }
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(var(--muted-foreground) / 0.3) hsl(var(--background));
 }

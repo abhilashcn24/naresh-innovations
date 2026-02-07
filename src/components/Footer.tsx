@@ -31,164 +31,76 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-luxury-charcoal text-luxury-charcoal-foreground">
+    <footer className="bg-luxury-charcoal text-luxury-charcoal-foreground text-sm">
       {/* Main Footer */}
-      <div className="container mx-auto px-6 py-16">
-        <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8">
+      <div className="container mx-auto px-6 py-8">
+        <div className="grid md:grid-cols-3 gap-8">
           {/* Company Info */}
-          <div className="space-y-6">
+          <div className="space-y-4">
             <div className="flex items-center space-x-2">
-                                            <div className="w-10 h-10 flex items-center justify-center overflow-hidden rounded-full bg-white/10 backdrop-blur-sm">
-                 <img 
-                   src="/logo.png" 
-                   alt="Naresh Innovations Logo" 
-                   className="w-full h-full object-contain rounded-full"
-                   onError={(e) => {
-                     // Fallback to text if image fails to load
-                     e.currentTarget.style.display = 'none';
-                     e.currentTarget.nextElementSibling?.classList.remove('hidden');
-                   }}
-                 />
-                 <span className="text-white font-bold text-sm hidden">NI</span>
-               </div>
-              <div>
-                <h3 className="text-xl font-bold">Naresh Innovations</h3>
-                <p className="text-sm text-luxury-charcoal-foreground/80">Crafting Dream Interiors</p>
+              <div className="w-8 h-8 flex items-center justify-center overflow-hidden rounded-full bg-white/10 backdrop-blur-sm">
+                <img
+                  src="/logo.png"
+                  alt="NI"
+                  className="w-full h-full object-contain"
+                />
               </div>
+              <h3 className="text-lg font-bold">Nāresh Innovations</h3>
             </div>
-            
-            <p className="text-luxury-charcoal-foreground/80 leading-relaxed">
-              Transform your space with our premium interior solutions. From concept to completion, 
-              we bring luxury and functionality together in perfect harmony.
-            </p>
 
-            <div className="space-y-3">
-              <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-accent" />
-                <span className="text-sm">Kuvempu Nagar 1st Stage, Kuvempu Nagara, Mysuru, Karnataka 570023</span>
+            <div className="space-y-2 opacity-80">
+              <div className="flex items-start space-x-2">
+                <MapPin className="w-4 h-4 text-accent mt-1 flex-shrink-0" />
+                <span className="text-xs leading-relaxed">#673, 'M' block, Kuvempu Nagar 2nd Stage, Nrupathunga Road, Mysuru-570023</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Phone className="w-5 h-5 text-accent" />
-                <span className="text-sm">+91 9880079820</span>
+              <div className="flex items-center space-x-2">
+                <Phone className="w-4 h-4 text-accent flex-shrink-0" />
+                <span className="text-xs">+91 9880079820</span>
               </div>
-              <div className="flex items-center space-x-3">
-                <Mail className="w-5 h-5 text-accent" />
-                <span className="text-sm">nareshinnovations@yahoo.com</span>
-              </div>
-              <div className="flex items-center space-x-3">
-                <Clock className="w-5 h-5 text-accent" />
-                <span className="text-sm">Mon - Sat: 9:00 AM - 7:00 PM</span>
+              <div className="flex items-center space-x-2">
+                <Mail className="w-4 h-4 text-accent flex-shrink-0" />
+                <span className="text-xs">nareshinnovations@yahoo.com</span>
               </div>
             </div>
           </div>
 
           {/* Quick Links */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-accent">Quick Links</h4>
-            <ul className="space-y-3">
-              {quickLinks.map((link) => (
-                <li key={link.name}>
-                  <a
-                    href={link.href}
-                    className="text-luxury-charcoal-foreground/80 hover:text-accent transition-colors duration-300"
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-accent">Our Services</h4>
-            <ul className="space-y-3">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-luxury-charcoal-foreground/80 text-sm">
-                    {service}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h4 className="text-lg font-semibold mb-6 text-accent">Our Products</h4>
-            <ul className="space-y-3">
-              {products.map((product) => (
-                <li key={product}>
-                  <span className="text-luxury-charcoal-foreground/80 text-sm">
-                    {product}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Social Media & Newsletter */}
-        <div className="border-t border-luxury-charcoal-foreground/20 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-            <div className="flex items-center space-x-6">
-              <span className="text-luxury-charcoal-foreground/80">Follow us:</span>
-              <div className="flex space-x-4">
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-luxury-charcoal-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                >
-                  <Facebook className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-luxury-charcoal-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                >
-                  <Instagram className="w-5 h-5" />
-                </a>
-                <a
-                  href="#"
-                  className="w-10 h-10 bg-luxury-charcoal-foreground/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-accent-foreground transition-all duration-300"
-                >
-                  <Linkedin className="w-5 h-5" />
-                </a>
-              </div>
+          <div className="flex justify-around md:justify-start md:gap-12">
+            <div>
+              <h4 className="text-base font-semibold mb-3 text-accent">Links</h4>
+              <ul className="space-y-1">
+                {quickLinks.slice(0, 4).map((link) => (
+                  <li key={link.name}>
+                    <a href={link.href} className="text-xs hover:text-accent transition-colors">{link.name}</a>
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <div className="flex items-center space-x-4">
-              <span className="text-luxury-charcoal-foreground/80 text-sm">Get updates:</span>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="px-4 py-2 bg-luxury-charcoal-foreground/10 border border-luxury-charcoal-foreground/20 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-accent text-luxury-charcoal-foreground placeholder-luxury-charcoal-foreground/60"
-                />
-                <button className="px-6 py-2 bg-accent text-accent-foreground rounded-r-lg hover:bg-accent/90 transition-colors duration-300">
-                  Subscribe
-                </button>
-              </div>
+            <div>
+              <h4 className="text-base font-semibold mb-3 text-accent">Products</h4>
+              <ul className="space-y-1">
+                {products.slice(0, 4).map((product) => (
+                  <li key={product} className="text-xs opacity-80">{product}</li>
+                ))}
+              </ul>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-luxury-charcoal-foreground/20 bg-luxury-charcoal/50">
-        <div className="container mx-auto px-6 py-6">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-sm text-luxury-charcoal-foreground/60">
-              © {currentYear} Naresh Innovations. All rights reserved.
+          {/* Social */}
+          <div className="flex flex-col items-start md:items-end justify-between">
+            <div className="flex items-center space-x-4 mb-4">
+              <span className="text-xs opacity-70">Follow us:</span>
+              <a
+                href="https://www.instagram.com/naresh_innovations_official/?hl=en"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-white transition-all"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
             </div>
-            <div className="flex space-x-6 text-sm text-luxury-charcoal-foreground/60">
-              <a href="#" className="hover:text-accent transition-colors duration-300">
-                Privacy Policy
-              </a>
-              <a href="#" className="hover:text-accent transition-colors duration-300">
-                Terms of Service
-              </a>
-              <a href="#" className="hover:text-accent transition-colors duration-300">
-                Cookie Policy
-              </a>
+            <div className="text-xs opacity-50 text-right">
+              © {currentYear} Nāresh Innovations.<br />All rights reserved.
             </div>
           </div>
         </div>

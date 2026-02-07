@@ -1,43 +1,10 @@
 import { useEffect, useRef } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDown, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/hero-bg-green.jpg';
+import heroImage from '@/assets/hero-bg.jpg';
 
 const HeroSection = () => {
   const heroRef = useRef<HTMLDivElement>(null);
-  const titleRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Animate elements with staggered delays
-            setTimeout(() => {
-              titleRef.current?.classList.add('animate');
-            }, 300);
-            
-            setTimeout(() => {
-              subtitleRef.current?.classList.add('animate');
-            }, 600);
-            
-            setTimeout(() => {
-              ctaRef.current?.classList.add('animate');
-            }, 900);
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (heroRef.current) {
-      observer.observe(heroRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
 
   const scrollToNextSection = () => {
     const aboutSection = document.getElementById('about');
@@ -48,67 +15,71 @@ const HeroSection = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
     >
-      {/* Background Image with Overlay */}
+      {/* Immersive Background */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroImage}
           alt="Luxury interior design showcase"
-          className="w-full h-full object-cover opacity-30"
+          className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-black/20"></div>
+        {/* Modern Gradient Overlay for Visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+        <div className="absolute inset-0 bg-black/50" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center max-w-4xl mx-auto px-6">
-        <h1
-          ref={titleRef}
-          className="heading-xl text-white mb-6 luxury-fade-up"
-        >
-          Naresh Innovations
-          <span className="block text-accent mt-2 text-xl tracking-wide">Crafting Your Dream Interiors</span>
-        </h1>
+      {/* Hero Content - Laptop Optimized (Left Aligned for cleaner read) */}
+      <div className="container mx-auto px-6 relative z-10 pt-20">
+        <div className="max-w-4xl space-y-8 animate-fade-up">
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-white/90 text-sm font-medium">
+            <span className="w-2 h-2 rounded-full bg-[#3d550c]" />
+            <span>Premium Interior Solutions in Mysuru</span>
+          </div>
 
-        <p
-          ref={subtitleRef}
-          className="body-lg text-white/90 mb-8 max-w-2xl mx-auto luxury-fade-up"
-        >
-          Premium glass, plywood, locks, handles, and complete interior solutions in Mysuru. 
-          From 2D/3D design plans to turnkey execution, we transform spaces into luxury experiences.
-        </p>
+          <h1 className="heading-xl text-white drop-shadow-lg leading-tight">
+            <span className="font-light">Nāresh</span> <span className="font-bold text-primary">Innovations</span>
+            <span className="block mt-4 text-3xl md:text-4xl lg:text-5xl font-light text-white/90 tracking-wide">
+              Crafting Dream Interiors
+            </span>
+          </h1>
 
-        <div
-          ref={ctaRef}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center luxury-fade-up"
-        >
-          <Button size="lg" className="btn-luxury text-lg px-8 py-4">
-            Explore Our Work
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="bg-white/10 border-white/30 text-white hover:bg-white/20 hover:text-accent transition-all duration-300 px-8 py-4 backdrop-blur-sm"
-          >
-            Get Free Consultation
-          </Button>
+          <p className="body-lg text-white/80 max-w-2xl text-lg md:text-xl font-light leading-relaxed">
+            From premium glass and plywood to turnkey execution. We bring 15+ years of expertise to transform your space into a masterpiece of luxury and functionality.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 pt-4">
+            <Button
+              size="lg"
+              onClick={() => document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-primary hover:bg-primary/90 text-primary-foreground text-lg px-8 py-6 h-auto rounded-full transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105"
+            >
+              Explore Our Collections
+              <ArrowRight className="ml-2 w-5 h-5" />
+            </Button>
+
+            <Button
+              variant="outline"
+              size="lg"
+              onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
+              className="bg-white/5 border-white/20 text-white hover:bg-white hover:text-black text-lg px-8 py-6 h-auto rounded-full backdrop-blur-md transition-all duration-300"
+            >
+              Get Free Consultation
+            </Button>
+          </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10">
+      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
         <button
           onClick={scrollToNextSection}
-          className="scroll-indicator p-2 rounded-full glass-effect hover:bg-accent/20 transition-all duration-300"
+          className="p-3 rounded-full bg-white/5 border border-white/10 hover:bg-white/10 transition-colors text-white/70"
           aria-label="Scroll to next section"
         >
           <ChevronDown size={24} />
         </button>
       </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute top-20 left-10 w-20 h-20 bg-accent/20 rounded-full blur-xl animate-float"></div>
-      <div className="absolute bottom-40 right-20 w-16 h-16 bg-primary/20 rounded-full blur-lg animate-float" style={{ animationDelay: '1s' }}></div>
     </section>
   );
 };
