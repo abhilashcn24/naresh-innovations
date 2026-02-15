@@ -92,8 +92,8 @@ const PortfolioSection = () => {
         const elements = document.querySelectorAll('.portfolio-card');
         elements.forEach((el) => observer.observe(el));
 
-        // Fetch projects dynamically
-        fetch('http://localhost:3001/api/portfolio-images')
+        // Fetch projects from static JSON
+        fetch('/portfolio.json')
             .then(res => res.json())
             .then(data => {
                 // Filter data into categories

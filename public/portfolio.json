@@ -1,0 +1,80 @@
+[
+  {
+    "id": 1,
+    "category": "bedrooms",
+    "src": "/portfolio/bedrooms/528faa72fc51203370689171d75d0d41.jpg",
+    "alt": "bedrooms project 2"
+  },
+  {
+    "id": 2,
+    "category": "bedrooms",
+    "src": "/portfolio/bedrooms/66dd3b8ac09b1fcf01cb73b69ae583e1.jpg",
+    "alt": "bedrooms project 3"
+  },
+  {
+    "id": 3,
+    "category": "bedrooms",
+    "src": "/portfolio/bedrooms/96137eec6a58d4510c06acbfbcd74c92.jpg",
+    "alt": "bedrooms project 4"
+  },
+  {
+    "id": 4,
+    "category": "bedrooms",
+    "src": "/portfolio/bedrooms/c1af8f709367c27bb306dc22c8d5b71b.jpg",
+    "alt": "bedrooms project 5"
+  },
+  {
+    "id": 5,
+    "category": "bedrooms",
+    "src": "/portfolio/bedrooms/cf9db07ba594941beb0e62818e687151.jpg",
+    "alt": "bedrooms project 6"
+  },
+  {
+    "id": 6,
+    "category": "kitchens",
+    "src": "/portfolio/kitchens/0137283bac04e90d88f2941730c3024d.jpg",
+    "alt": "kitchens project 7"
+  },
+  {
+    "id": 7,
+    "category": "kitchens",
+    "src": "/portfolio/kitchens/7a618dece8c76d948050b8fae9e137bc.jpg",
+    "alt": "kitchens project 8"
+  },
+  {
+    "id": 8,
+    "category": "kitchens",
+    "src": "/portfolio/kitchens/c5dda07b0581a6cb0f443c6891c18d36.jpg",
+    "alt": "kitchens project 9"
+  },
+  {
+    "id": 9,
+    "category": "kitchens",
+    "src": "/portfolio/kitchens/modern-kitchen.jpg",
+    "alt": "kitchens project 10"
+  },
+  {
+    "id": 10,
+    "category": "office space",
+    "src": "/portfolio/office%20space/18c289e53405a94816cf427da9d1fceb.jpg",
+    "alt": "office space project 11"
+  },
+  {
+    "id": 11,
+    "category": "office space",
+    "src": "/portfolio/office%20space/1fc2fe557c6c9b1cf470a21a9abc1757.jpg",
+    "alt": "office space project 12"
+  },
+  {
+    "id": 12,
+    "category": "office space",
+    "src": "/portfolio/office%20space/cfb0c7d9ce19e7605f95848b1068a569.jpg",
+    "alt": "office space project 13"
+  },
+  {
+    "id": 13,
+    "category": "office space",
+    "src": "/portfolio/office%20space/dcf4fe8ee4c227d797288ba718afc798.jpg",
+    "alt": "office space project 14"
+  }
+]

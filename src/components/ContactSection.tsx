@@ -1,9 +1,66 @@
-import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
+import { useState } from 'react';
+import { MapPin, Phone, Mail, Clock, Send, Loader2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
+import { useToast } from '@/hooks/use-toast';
 
 const ContactSection = () => {
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+
+    try {
+      const response = await fetch('https://n8n.digitalsignageindia.co.in/webhook-test/d0c819ec-55f3-47e4-aa99-528147090104', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent!",
+          description: "We'll get back to you as soon as possible.",
+        });
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="contact" className="section-container bg-muted/30" style={{ borderRadius: '24px' }}>
       <div className="grid lg:grid-cols-2 gap-12 lg:gap-24">
@@ -54,21 +111,43 @@ const ContactSection = () => {
 
         {/* Right: Form */}
         <div className="bg-card p-8 border border-border shadow-xl" style={{ borderRadius: '24px' }}>
-          <form className="space-y-6">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div className="grid sm:grid-cols-2 gap-6">
               <div className="space-y-2">
                 <label htmlFor="name" className="text-sm font-medium">Name</label>
-                <Input id="name" placeholder="John Doe" className="bg-background" />
+                <Input
+                  id="name"
+                  placeholder="John Doe"
+                  className="bg-background"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                />
               </div>
               <div className="space-y-2">
                 <label htmlFor="phone" className="text-sm font-medium">Phone</label>
-                <Input id="phone" placeholder="+91 98765 43210" className="bg-background" />
+                <Input
+                  id="phone"
+                  placeholder="+91 98765 43210"
+                  className="bg-background"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                />
               </div>
             </div>
 
             <div className="space-y-2">
               <label htmlFor="email" className="text-sm font-medium">Email</label>
-              <Input id="email" type="email" placeholder="john@example.com" className="bg-background" />
+              <Input
+                id="email"
+                type="email"
+                placeholder="john@example.com"
+                className="bg-background"
+                value={formData.email}
+                onChange={handleChange}
+                required
+              />
             </div>
 
             <div className="space-y-2">
@@ -77,11 +156,22 @@ const ContactSection = () => {
                 id="message"
                 placeholder="Tell us about your project..."
                 className="min-h-[150px] bg-background resize-none"
+                value={formData.message}
+                onChange={handleChange}
+                required
               />
             </div>
 
-            <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6">
-              Send Message <Send className="ml-2 w-5 h-5" />
+            <Button
+              type="submit"
+              className="w-full bg-primary hover:bg-primary/90 text-primary-foreground text-lg py-6"
+              disabled={loading}
+            >
+              {loading ? (
+                <>Sending... <Loader2 className="ml-2 w-5 h-5 animate-spin" /></>
+              ) : (
+                <>Send Message <Send className="ml-2 w-5 h-5" /></>
+              )}
             </Button>
           </form>
         </div>
