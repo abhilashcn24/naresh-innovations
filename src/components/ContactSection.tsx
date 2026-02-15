@@ -28,7 +28,7 @@ const ContactSection = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('https://n8n.digitalsignageindia.co.in/webhook-test/d0c819ec-55f3-47e4-aa99-528147090104', {
+      const response = await fetch('https://n8n.digitalsignageindia.co.in/webhook/d0c819ec-55f3-47e4-aa99-528147090104', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
